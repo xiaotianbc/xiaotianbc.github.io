@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/java/</link>
+    <description>Recent content in java on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 02 Mar 2020 12:23:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>小试Java中的socket通信</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/javasocket1/</link>
+      <pubDate>Mon, 02 Mar 2020 12:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/javasocket1/</guid>
+      <description>socket是一种基于TCP/IP的封装，本文模拟了java里简单的ServerSocket和客户端Socket的通信。 客户端： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/linux/</link>
+    <description>Recent content in linux on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Jan 2020 16:23:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vim在文件末尾增加内容</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/littleaboutvim/</link>
+      <pubDate>Sun, 26 Jan 2020 16:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/littleaboutvim/</guid>
+      <description>很多时候有在文件末尾增加内容的需求，简单了解快捷键之后就不用再一直按方向键了 跳到文本的最后一行：按G,即shift+g 跳到文本的第一行：gg 跳到最后一个字符 ： 按$键，即shift+4 在当前行下面插入一个新行: o 在当前行上面插入一个新行: O 所以想在文件末尾增加内容的操作就是：G&amp;n</description>
+    </item>
+    
+    <item>
+      <title>斐讯N1踩坑不完全记录</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/nonefixsomebugs/</link>
+      <pubDate>Thu, 09 Jan 2020 23:19:34 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/nonefixsomebugs/</guid>
+      <description>斐讯 N1 想要当做一个单独的 linux 主机用需要踩很多坑，在此记录一下： 如果安装的时候发现有提示tar ...stamp ... in future这是因为解压出的文件的修改时间大于当前系统时间导致的，不想看到的话就修改一下当前时间： 1 date -s &amp;#34;2020-01-11 15:15:15&amp;#34; 在安装之前，要编辑/root/install.sh里的分区设定： 1 2 parted -s &amp;#34;${DEV_EMMC}&amp;#34; mkpart</description>
+    </item>
+    
+    <item>
+      <title>Linux相关命令记录</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/Linux-micro-thing/</link>
+      <pubDate>Tue, 31 Dec 2019 21:11:43 +0000</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/Linux-micro-thing/</guid>
+      <description>仅仅是为了方便记忆，一般都为 ArchLinux debian10使用。 依赖 1 2 apt update apt install -y vim zsh htop curl git wget unzip screen 安装ssh-key 1 echo &amp;#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQ4YL6VNGhNDFhj/CJbmtUpcTFpyC2YqK19L4dAbTvtsPog3OgqNkdLJnxL6dONqucnrusoOykAI3/5dwHIT5IXHTkye4pEywHAbZBNES7ZGitZgCbmpMhmaecz9ZE3mGeSBkOqYDho33uH5xT9O0AU0pgLRo7BO//ae+gnsH1WEkbK4y0a+typw9QcAupTi+wmfg/w+u6zYGiB3CPZhNqk5SEBvt9WI4cDbcovCTCfhsu1Ty6tD2tCEHeBRzd9UVlZfDpY/dBOcCbBQVEU2Zf1sQos0lkEjcV77oh5REtrha3DojIqZqYSWw+l7cKny6u6Z4W5O/IIVNsS5Tda3oN canxuetian@gmail.com&amp;#34; &amp;gt; ~/.ssh/authorized_keys 禁用密码登录 1 2 3 4 5 6 vim /etc/ssh/sshd_config PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys PasswordAuthentication no PermitRootLogin without-password 删除登陆信息 1 touch ~/.hushlogin besttrace 1 2 3 4 5 wget https://78997899.xyz/od/Linux/besttrace4linux.zip unzip be* chmod +x besttrace mv besttrace /usr/local/bin/btr rm -rf ./besttrace* zsh 1 2 3 4 5 6 7 sh -c &amp;#34;$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)&amp;#34; #linux curl -fsSL https://starship.rs/install.sh | bash #mac brew install starship # ~/.zshrc eval &amp;#34;$(starship init zsh)&amp;#34; LinuxBrew</description>
+    </item>
+    
+    <item>
+      <title>使用斐讯N1搭建Openwrt旁路网关</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/N1-docker-openwrt/</link>
+      <pubDate>Sun, 29 Dec 2019 21:26:32 +0000</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/N1-docker-openwrt/</guid>
+      <description>前言 N1我在年初就买了，但是买回来装了armbian后就一直在吃灰，主要是性能不是很够用，并且当时不知道什么原因导致的连接上路由器之后网卡工作在100 Full Duplex模式下，实在让人吐血（现在刷了最新的armbian之后已经默认千兆），之前无聊之下在研究旁路路由，先在Nas上用kv</description>
+    </item>
+    
+    <item>
+      <title>给ubuntu Bionic设置静态IP</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/ubuntu-bionic-static-ip/</link>
+      <pubDate>Sun, 22 Dec 2019 23:24:36 +0000</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/ubuntu-bionic-static-ip/</guid>
+      <description>&lt;p&gt;vim /etc/netplan/01-netcfg.yaml&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用ssh密钥登陆</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/ssh-keygen/</link>
+      <pubDate>Tue, 03 Dec 2019 22:50:10 +0000</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/ssh-keygen/</guid>
+      <description>在命令行中输入: ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot; cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys chmod 600 ~/.ssh/authorized_keys chmod 700 ~/.ssh vim /etc/ssh/sshd_config RSAAuthentication yes PubkeyAuthentication yes #添加心跳检测 ClientAliveInterval 60 ClientAliveCountMax 1 service sshd restart</description>
+    </item>
+    
+  </channel>
+</rss>

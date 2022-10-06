@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kata on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/kata/</link>
+    <description>Recent content in kata on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 05 Feb 2020 13:23:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/kata/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[kata]用golang生成顺时针螺旋</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/kata1/</link>
+      <pubDate>Wed, 05 Feb 2020 13:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/kata1/</guid>
+      <description>题目： Your objective is to complete a function createSpiral(N) that receives an integer N and returns an NxN two-dimensional array with numbers 1 through NxN represented as a clockwise spiral. 示例： Examples: N = 3 Output: [[1,2,3],[8,9,4],[7,6,5]] 1 2 3 1 2 3 8 9 4 7 6 5 N = 4 Output: [[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]] 1 2 3 4 1 2 3 4 12 13 14 5 11 16 15 6 10 9 8 7 N = 5 Output: [[1,2,3,4,5],[16,17,18,19,6],[15,24,25,20,7],[14,23,22,21,8],[13,12,11,10,9]] 1 2 3 4 5 1 2 3 4 5 16 17 18 19 6 15 24 25 20 7 14 23 22 21 8 13 12 11 10 9 代码： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</description>
+    </item>
+    
+    <item>
+      <title>在Codewars--代码战争中锻炼你的熟练度</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/codewars/</link>
+      <pubDate>Tue, 28 Jan 2020 14:57:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/codewars/</guid>
+      <description>近日在家学习golang，发现了这么一个网站：codewars，里面的题目大多数都是比较侧重实用的，刷了一会儿感觉挺有趣的，同时对于初学者来说收获也是有的： 学会看官网的文档，golang的文档友善度简直Max，如果觉得某个功能有内置的函数，找一下基本都能找到。 求除数之类的算法，必</description>
+    </item>
+    
+  </channel>
+</rss>

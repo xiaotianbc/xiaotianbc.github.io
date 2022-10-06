@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 05 Jan 2020 16:23:34 +0000</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eloquent JavaScript笔记：迭代器</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/EloquentJavaScriptNotesA/</link>
+      <pubDate>Sun, 05 Jan 2020 16:23:34 +0000</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/EloquentJavaScriptNotesA/</guid>
+      <description>迭代器是做什么的 迭代（Iteration）是我们在写程序的时候很常见的操作，在没有迭代器之前，如果我们想要迭代一个可以迭代的对象，可以使用循环来实现： 1 2 3 for (let index = 0; index &amp;lt; array.length; index++) { //do something } 在 ECMAScript 2015 标准中引入了一种语法叫做for ... of循环，用来迭代一个可以被迭代的对象，比如数组，字符串等，</description>
+    </item>
+    
+  </channel>
+</rss>

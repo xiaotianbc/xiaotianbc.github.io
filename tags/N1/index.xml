@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>N1 on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/N1/</link>
+    <description>Recent content in N1 on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 09 Jan 2020 23:19:34 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/N1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>斐讯N1踩坑不完全记录</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/nonefixsomebugs/</link>
+      <pubDate>Thu, 09 Jan 2020 23:19:34 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/nonefixsomebugs/</guid>
+      <description>斐讯 N1 想要当做一个单独的 linux 主机用需要踩很多坑，在此记录一下： 如果安装的时候发现有提示tar ...stamp ... in future这是因为解压出的文件的修改时间大于当前系统时间导致的，不想看到的话就修改一下当前时间： 1 date -s &amp;#34;2020-01-11 15:15:15&amp;#34; 在安装之前，要编辑/root/install.sh里的分区设定： 1 2 parted -s &amp;#34;${DEV_EMMC}&amp;#34; mkpart</description>
+    </item>
+    
+  </channel>
+</rss>

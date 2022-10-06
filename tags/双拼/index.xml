@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>双拼 on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/%E5%8F%8C%E6%8B%BC/</link>
+    <description>Recent content in 双拼 on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 16 May 2020 13:23:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/%E5%8F%8C%E6%8B%BC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微软拼音添加小鹤方案</title>
+      <link>https://xiaotianbc.github.io/post/2020/05/windowsaddshuangpin/</link>
+      <pubDate>Sat, 16 May 2020 13:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/05/windowsaddshuangpin/</guid>
+      <description>添加注册表： Windows Registry Editor Version 5.00 [HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS] &amp;#34;UserDefinedDoublePinyinScheme1&amp;#34;=&amp;#34;小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt&amp;#34; 来源： Win10 微软拼音添加小鹤双拼以及其他配置</description>
+    </item>
+    
+  </channel>
+</rss>

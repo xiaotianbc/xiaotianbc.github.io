@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/go/</link>
+    <description>Recent content in go on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 30 Jan 2020 22:57:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go写一个在原地完成消除[]string中相邻重复的字符串的操作</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/nonsamestring/</link>
+      <pubDate>Thu, 30 Jan 2020 22:57:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/nonsamestring/</guid>
+      <description>这个是在《go语言圣经》中的一道题，我花了大约一个小时写出了一个自己都不想看的双重循环版本： 1 2 3 4 5 6 7 8 9 10 11 12 13 func nonSameString(s []string) []string { for i, _ := range s { if i+1 &amp;lt; len(s) &amp;amp;&amp;amp; s[i] == s[i+1] { fmt.Printf(&amp;#34;发现%d和%d重复，开始修改&amp;#34;, i, i+1) for i1 := i; i1 &amp;lt; len(s)-1; i1++ { s[i1] = s[i1+1] } s = s[:len(s)-1] fmt.Pr</description>
+    </item>
+    
+    <item>
+      <title>go语言圣经阅读笔记</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/gonote1/</link>
+      <pubDate>Wed, 29 Jan 2020 11:57:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/gonote1/</guid>
+      <description>词法作用域 1 2 3 4 5 6 7 8 if x := f(); x == 0 { fmt.Println(x) } else if y := g(x); x == y { fmt.Println(x, y) } else { fmt.Println(x, y) } fmt.Println(x, y) // compile error: x and y are not visible here 第二个 if 语句嵌套在第一个内部，因此第一个 if 语句条件初始化词法域声明的变量在第二个 if 中也可以访问。switch 语句的每个分支也有类似的词法域规则：条件部分为一个隐式词法域，然后每</description>
+    </item>
+    
+    <item>
+      <title>在Codewars--代码战争中锻炼你的熟练度</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/codewars/</link>
+      <pubDate>Tue, 28 Jan 2020 14:57:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/codewars/</guid>
+      <description>近日在家学习golang，发现了这么一个网站：codewars，里面的题目大多数都是比较侧重实用的，刷了一会儿感觉挺有趣的，同时对于初学者来说收获也是有的： 学会看官网的文档，golang的文档友善度简直Max，如果觉得某个功能有内置的函数，找一下基本都能找到。 求除数之类的算法，必</description>
+    </item>
+    
+  </channel>
+</rss>

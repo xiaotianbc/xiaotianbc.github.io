@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vim on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/vim/</link>
+    <description>Recent content in vim on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Jan 2020 16:23:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>vim在文件末尾增加内容</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/littleaboutvim/</link>
+      <pubDate>Sun, 26 Jan 2020 16:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/littleaboutvim/</guid>
+      <description>很多时候有在文件末尾增加内容的需求，简单了解快捷键之后就不用再一直按方向键了 跳到文本的最后一行：按G,即shift+g 跳到文本的第一行：gg 跳到最后一个字符 ： 按$键，即shift+4 在当前行下面插入一个新行: o 在当前行上面插入一个新行: O 所以想在文件末尾增加内容的操作就是：G&amp;n</description>
+    </item>
+    
+  </channel>
+</rss>

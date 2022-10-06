@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>[kata]用golang生成顺时针螺旋 | 啸天编程-啸天的编程记录</title>
+    <meta property="og:title" content="[kata]用golang生成顺时针螺旋 - 啸天编程-啸天的编程记录">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-02-05T13:23:51&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-02-05T13:23:51&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="[kata]用golang生成顺时针螺旋">
+        
+    <meta name="author" content="lwxntm">
+    <meta property="og:url" content="https://xiaotianbc.github.io/post/2020/03/kata1/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://xiaotianbc.github.io">
+                        啸天编程-啸天的编程记录
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://xiaotianbc.github.io">首页</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/flags/" title="Flags">Flags</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#题目">题目：</a></li>
+    <li><a href="#示例">示例：</a></li>
+    <li><a href="#代码">代码：</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if (leftPos < 220) {
+                postToc.css({ "width": leftPos - 10, "margin-left": (0 - leftPos) })
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+
+        if ($("#TableOfContents").children().length < 1) {
+            $(".post-toc").remove();
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">[kata]用golang生成顺时针螺旋</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年2月5日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="题目">题目：</h2>
+<p>Your objective is to complete a function createSpiral(N) that receives an integer N and returns an NxN two-dimensional array with numbers 1 through NxN represented as a clockwise spiral.</p>
+<h2 id="示例">示例：</h2>
+<p>Examples:</p>
+<p>N = 3 Output: <code>[[1,2,3],[8,9,4],[7,6,5]]</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#099">1</span>    <span style="color:#099">2</span>    <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">8</span>    <span style="color:#099">9</span>    <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">7</span>    <span style="color:#099">6</span>    <span style="color:#099">5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>N = 4 Output: <code>[[1,2,3,4],[12,13,14,5],[11,16,15,6],[10,9,8,7]]</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#099">1</span>   <span style="color:#099">2</span>   <span style="color:#099">3</span>   <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">12</span>  <span style="color:#099">13</span>  <span style="color:#099">14</span>  <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">11</span>  <span style="color:#099">16</span>  <span style="color:#099">15</span>  <span style="color:#099">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">10</span>  <span style="color:#099">9</span>   <span style="color:#099">8</span>   <span style="color:#099">7</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>N = 5 Output: <code>[[1,2,3,4,5],[16,17,18,19,6],[15,24,25,20,7],[14,23,22,21,8],[13,12,11,10,9]]</code></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#099">1</span>   <span style="color:#099">2</span>   <span style="color:#099">3</span>   <span style="color:#099">4</span>   <span style="color:#099">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">16</span>  <span style="color:#099">17</span>  <span style="color:#099">18</span>  <span style="color:#099">19</span>  <span style="color:#099">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">15</span>  <span style="color:#099">24</span>  <span style="color:#099">25</span>  <span style="color:#099">20</span>  <span style="color:#099">7</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">14</span>  <span style="color:#099">23</span>  <span style="color:#099">22</span>  <span style="color:#099">21</span>  <span style="color:#099">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">13</span>  <span style="color:#099">12</span>  <span style="color:#099">11</span>  <span style="color:#099">10</span>  <span style="color:#099">9</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="代码">代码：</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">package</span> kata
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#d14">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//向右转向函数，用wasd代表当前的方向，转向就返回右边的方向
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">turn</span>(string2 <span style="color:#458;font-weight:bold">string</span>) <span style="color:#458;font-weight:bold">string</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">string</span>(<span style="color:#d14">&#34;dsaw&#34;</span>[(strings.<span style="color:#900;font-weight:bold">Index</span>(<span style="color:#d14">&#34;dsaw&#34;</span>, string2)<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>)<span style="color:#000;font-weight:bold">%</span><span style="color:#099">4</span>])
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">CreateSpiral</span>(n <span style="color:#458;font-weight:bold">int</span>) [][]<span style="color:#458;font-weight:bold">int</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">if</span> n &lt; <span style="color:#099">1</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> [][]<span style="color:#458;font-weight:bold">int</span>{}
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  arr <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>([][]<span style="color:#458;font-weight:bold">int</span>, n)
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>; i &lt; n; i<span style="color:#000;font-weight:bold">++</span> {
+</span></span><span style="display:flex;"><span>    arr[i] = <span style="color:#0086b3">make</span>([]<span style="color:#458;font-weight:bold">int</span>, n)
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#998;font-style:italic">//方向，出发时向右
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  direction <span style="color:#000;font-weight:bold">:=</span> <span style="color:#d14">&#34;d&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#998;font-style:italic">//当前的坐标
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  now <span style="color:#000;font-weight:bold">:=</span> [<span style="color:#099">2</span>]<span style="color:#458;font-weight:bold">int</span>{<span style="color:#099">0</span>, <span style="color:#099">0</span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">for</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">//给当前坐标赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>    arr[now[<span style="color:#099">1</span>]][now[<span style="color:#099">0</span>]] = i
+</span></span><span style="display:flex;"><span>    i<span style="color:#000;font-weight:bold">++</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">==</span> n<span style="color:#000;font-weight:bold">*</span>n<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">//考虑下一个方向，如果超出边界，或者值已经存在，说明需要转向了，否则前进一步
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>  sw:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">switch</span> direction {
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">case</span> <span style="color:#d14">&#34;d&#34;</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">if</span> now[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">==</span> n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span> <span style="color:#000;font-weight:bold">||</span> arr[now[<span style="color:#099">1</span>]][now[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> {
+</span></span><span style="display:flex;"><span>        direction = <span style="color:#900;font-weight:bold">turn</span>(direction)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">goto</span> sw
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      now[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">++</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">case</span> <span style="color:#d14">&#34;s&#34;</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">if</span> now[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">==</span> n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span> <span style="color:#000;font-weight:bold">||</span> arr[now[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">+</span><span style="color:#099">1</span>][now[<span style="color:#099">0</span>]] <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> {
+</span></span><span style="display:flex;"><span>        direction = <span style="color:#900;font-weight:bold">turn</span>(direction)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">goto</span> sw
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      now[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">++</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">case</span> <span style="color:#d14">&#34;a&#34;</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">if</span> now[<span style="color:#099">0</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">||</span> arr[now[<span style="color:#099">1</span>]][now[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> {
+</span></span><span style="display:flex;"><span>        direction = <span style="color:#900;font-weight:bold">turn</span>(direction)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">goto</span> sw
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      now[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">--</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">case</span> <span style="color:#d14">&#34;w&#34;</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#000;font-weight:bold">if</span> now[<span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">||</span> arr[now[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>][now[<span style="color:#099">0</span>]] <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> {
+</span></span><span style="display:flex;"><span>        direction = <span style="color:#900;font-weight:bold">turn</span>(direction)
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">goto</span> sw
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      now[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">--</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#000;font-weight:bold">return</span> arr
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/2020/03/codewars/">在Codewars--代码战争中锻炼你的熟练度</a></li>
+        
+        <li><a href="/flags/">flags</a></li>
+        
+        <li><a href="/post/2020/03/nonsamestring/">go写一个在原地完成消除[]string中相邻重复的字符串的操作</a></li>
+        
+        <li><a href="/about/"></a></li>
+        
+        <li><a href="/post/2020/03/gonote1/">go语言圣经阅读笔记</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/kata'>kata</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="https://xiaotianbc.github.io">啸天编程-啸天的编程记录 By lwxntm</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://xiaotianbc.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://xiaotianbc.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2022/10/reburn_blog/" title="博客重启">博客重启</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2022/03/develop-pio-with-Clion-win/" title="使用windows&#43;Clion开发树莓派pico RP2040简易入门指南">使用windows&#43;Clion开发树莓派pico RP2040简易入门指南</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2021/02/mhgu-trans-bonus/" title="手动转移mhgu存档获得特典的作弊条">手动转移mhgu存档获得特典的作弊条</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2021/02/swtich-init/" title="从零开始使用大气层RCM破解switch的作弊条">从零开始使用大气层RCM破解switch的作弊条</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/05/windowsaddshuangpin/" title="微软拼音添加小鹤方案">微软拼音添加小鹤方案</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/rust-linux-cross-build/" title="Mac上为Linux交叉编译Rust程序">Mac上为Linux交叉编译Rust程序</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/Rustmultitarget/" title="Rust为arm交叉编译">Rust为arm交叉编译</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/javasocket1/" title="小试Java中的socket通信">小试Java中的socket通信</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/kata1/" title="[kata]用golang生成顺时针螺旋">[kata]用golang生成顺时针螺旋</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/nonsamestring/" title="go写一个在原地完成消除[]string中相邻重复的字符串的操作">go写一个在原地完成消除[]string中相邻重复的字符串的操作</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://xiaotianbc.github.io/tags/N1/">N1</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/go/">go</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/java/">java</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/javascript/">javascript</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/kata/">kata</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/linux/">linux</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/pico/">pico</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/rust/">rust</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/switch/">switch</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/vim/">vim</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/vscode/">vscode</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/windows/">windows</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/%E5%8F%8C%E6%8B%BC/">双拼</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://list.78997899.xyz/" title="ServerStatus">ServerStatus</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://xiaotianbc.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>switch on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/switch/</link>
+    <description>Recent content in switch on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 14 Feb 2021 10:15:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/switch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>手动转移mhgu存档获得特典的作弊条</title>
+      <link>https://xiaotianbc.github.io/post/2021/02/mhgu-trans-bonus/</link>
+      <pubDate>Sun, 14 Feb 2021 10:15:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2021/02/mhgu-trans-bonus/</guid>
+      <description>笔者把已经玩了很久的mhgu存档转移到了具有特典和dlc配信任务的新存档中，故写此作弊条。 需要用到的工具： 十六进制编辑器 ： https://www.hhdsoftware.com/free-hex-editor switch存档管理工具： https://github.com/J-D-K/JKSV mhgu特典空存档： 链接：https://pan.baidu.com/s/115wlcykE45TDAX3rs-5SDQ 提取码：</description>
+    </item>
+    
+    <item>
+      <title>从零开始使用大气层RCM破解switch的作弊条</title>
+      <link>https://xiaotianbc.github.io/post/2021/02/swtich-init/</link>
+      <pubDate>Sun, 14 Feb 2021 09:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2021/02/swtich-init/</guid>
+      <description>笔者近日折腾了于18年购入后只玩了BOTW就一直吃灰的switch一台，从目前联网可更新的最新系统11.0.1开始进行大气层破解，书写作弊条以记录。 初始化你的switch（如果没有需要保留的存档的话）。 准备一张TF卡，格式化成exFAT格式，直接插入switch，确认可以正常识别</description>
+    </item>
+    
+  </channel>
+</rss>

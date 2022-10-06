@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on 啸天编程-啸天的编程记录</title>
+    <link>https://xiaotianbc.github.io/tags/rust/</link>
+    <description>Recent content in rust on 啸天编程-啸天的编程记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 28 Mar 2020 12:23:51 +0800</lastBuildDate><atom:link href="https://xiaotianbc.github.io/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac上为Linux交叉编译Rust程序</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/rust-linux-cross-build/</link>
+      <pubDate>Sat, 28 Mar 2020 12:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/rust-linux-cross-build/</guid>
+      <description>目标是创建 x86_64-unknown-linux-musl 平台的应用程序，通过静态连接musl, 不再依赖glibc库。 1 2 3 brew install FiloSottile/musl-cross/musl-cross rustup target add x86_64-unknown-linux-musl # First time only cargo build --release --target x86_64-unknown-linux-musl 你还需要创建musl-gcc: 1 ln -s /usr/local/bin/x86_64-linux-musl-gcc /usr/local/bin/musl-gcc 你还需要设置linker, 创建.cargo/config,增加下面的两行： 1 2 [target.x86_64-unknown-linux-musl] linker = &amp;#34;x86_64-linux-musl-gcc&amp;#34; 然后运行下面的命令进行交叉编译： 1 CROSS_COMPILE=x86_64-linux-musl- cargo build --release --target</description>
+    </item>
+    
+    <item>
+      <title>Rust为arm交叉编译</title>
+      <link>https://xiaotianbc.github.io/post/2020/03/Rustmultitarget/</link>
+      <pubDate>Tue, 03 Mar 2020 11:23:51 +0800</pubDate>
+      
+      <guid>https://xiaotianbc.github.io/post/2020/03/Rustmultitarget/</guid>
+      <description>首先我们要知道，对于Rust这种语言来说，需先编译再链接： 安装编译器 1 $ rustup target list 可以看到列出的项目，如果需要aarch64-unknown-linux-gnu,可以使用下面的命令安装： 1 $ rustup target add aarch64-unknown-linux-gnu 安装链接器 安装完成之后需要安装链接器，一般可以使用gcc，但是我发现gcc的官网只提供</description>
+    </item>
+    
+  </channel>
+</rss>

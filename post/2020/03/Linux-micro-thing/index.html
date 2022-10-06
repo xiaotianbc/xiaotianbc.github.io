@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Linux相关命令记录 | 啸天编程-啸天的编程记录</title>
+    <meta property="og:title" content="Linux相关命令记录 - 啸天编程-啸天的编程记录">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-12-31T21:11:43&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-12-31T21:11:43&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="Linux相关命令记录">
+        
+    <meta name="author" content="lwxntm">
+    <meta property="og:url" content="https://xiaotianbc.github.io/post/2020/03/Linux-micro-thing/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://xiaotianbc.github.io">
+                        啸天编程-啸天的编程记录
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://xiaotianbc.github.io">首页</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/flags/" title="Flags">Flags</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#依赖">依赖</a></li>
+    <li><a href="#安装ssh-key">安装ssh-key</a></li>
+    <li><a href="#禁用密码登录">禁用密码登录</a>
+      <ul>
+        <li><a href="#删除登陆信息">删除登陆信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#besttrace">besttrace</a></li>
+    <li><a href="#zsh">zsh</a></li>
+    <li><a href="#linuxbrew">LinuxBrew</a></li>
+    <li><a href="#ssh心跳">ssh心跳</a></li>
+    <li><a href="#rust">Rust</a></li>
+    <li><a href="#adoptjdk">adoptJDK</a></li>
+    <li><a href="#nodejs-13">Nodejs 13</a></li>
+    <li><a href="#node-gyp出现错误">node-gyp出现错误</a></li>
+    <li><a href="#arch-踩坑">Arch 踩坑</a></li>
+    <li><a href="#修改时区">修改时区</a></li>
+    <li><a href="#macos相关">macOS相关</a></li>
+    <li><a href="#linux创建sudo权限用户">Linux创建sudo权限用户</a></li>
+    <li><a href="#修改为zh_cnutf-8">修改为zh_CN.UTF-8</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if (leftPos < 220) {
+                postToc.css({ "width": leftPos - 10, "margin-left": (0 - leftPos) })
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+
+        if ($("#TableOfContents").children().length < 1) {
+            $(".post-toc").remove();
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Linux相关命令记录</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月31日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>仅仅是为了方便记忆，一般都为 <del>ArchLinux</del> debian10使用。</p>
+<h2 id="依赖">依赖</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt install -y vim zsh htop curl git wget unzip screen
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="安装ssh-key">安装ssh-key</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQ4YL6VNGhNDFhj/CJbmtUpcTFpyC2YqK19L4dAbTvtsPog3OgqNkdLJnxL6dONqucnrusoOykAI3/5dwHIT5IXHTkye4pEywHAbZBNES7ZGitZgCbmpMhmaecz9ZE3mGeSBkOqYDho33uH5xT9O0AU0pgLRo7BO//ae+gnsH1WEkbK4y0a+typw9QcAupTi+wmfg/w+u6zYGiB3CPZhNqk5SEBvt9WI4cDbcovCTCfhsu1Ty6tD2tCEHeBRzd9UVlZfDpY/dBOcCbBQVEU2Zf1sQos0lkEjcV77oh5REtrha3DojIqZqYSWw+l7cKny6u6Z4W5O/IIVNsS5Tda3oN canxuetian@gmail.com&#34;</span> &gt; ~/.ssh/authorized_keys
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="禁用密码登录">禁用密码登录</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/ssh/sshd_config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PubkeyAuthentication yes
+</span></span><span style="display:flex;"><span>AuthorizedKeysFile .ssh/authorized_keys
+</span></span><span style="display:flex;"><span>PasswordAuthentication no
+</span></span><span style="display:flex;"><span>PermitRootLogin without-password
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="删除登陆信息">删除登陆信息</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>touch ~/.hushlogin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="besttrace">besttrace</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://78997899.xyz/od/Linux/besttrace4linux.zip
+</span></span><span style="display:flex;"><span>unzip be*
+</span></span><span style="display:flex;"><span>chmod +x besttrace
+</span></span><span style="display:flex;"><span>mv besttrace /usr/local/bin/btr
+</span></span><span style="display:flex;"><span>rm -rf ./besttrace*
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="zsh">zsh</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sh -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#linux</span>
+</span></span><span style="display:flex;"><span>curl -fsSL https://starship.rs/install.sh | bash
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#mac</span>
+</span></span><span style="display:flex;"><span>brew install starship
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># ~/.zshrc</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">eval</span> <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>starship init zsh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="linuxbrew">LinuxBrew</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install build-essential gcc
+</span></span><span style="display:flex;"><span>/bin/bash -c <span style="color:#d14">&#34;</span><span style="color:#000;font-weight:bold">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span style="color:#000;font-weight:bold">)</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)&#39;</span> &gt;&gt; ~/.zshrc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ssh心跳">ssh心跳</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;ServerAliveInterval 30\n&#34;</span> &gt;&gt; /etc/ssh/ssh_config
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;ServerAliveCountMax 60\n&#34;</span> &gt;&gt; /etc/ssh/ssh_config
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="rust">Rust</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl --proto <span style="color:#d14">&#39;=https&#39;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">CARGO_HOME</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$HOME</span><span style="color:#d14">/.cargo&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">RUSTUP_HOME</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$HOME</span><span style="color:#d14">/.rustup&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">PATH</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$PATH</span>:<span style="color:#008080">$CARGO_HOME</span>/bin:<span style="color:#008080">$RUSTUP_HOME</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="adoptjdk">adoptJDK</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+</span></span><span style="display:flex;"><span>tar -C /usr/local -zxf ./OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+</span></span><span style="display:flex;"><span>rm ./OpenJDK8U-jdk_x64_linux_hotspot_8u242b08.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># .zshrc</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">JAVA_HOME</span><span style="color:#000;font-weight:bold">=</span>/usr/local/jdk8u242-b08
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">export</span> <span style="color:#008080">PATH</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$PATH</span>:<span style="color:#008080">$JAVA_HOME</span>/bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="nodejs-13">Nodejs 13</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -sL https://deb.nodesource.com/setup_13.x | bash -
+</span></span><span style="display:flex;"><span>apt-get install -y nodejs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="node-gyp出现错误">node-gyp出现错误</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo rm -rf <span style="color:#000;font-weight:bold">$(</span>xcode-select -print-path<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>xcode-select --install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="arch-踩坑">Arch 踩坑</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>pacman -S archlinux-keyring
+</span></span><span style="display:flex;"><span>vim /etc/locale.gen
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># 取消en_US.UTF8前面的注释</span>
+</span></span><span style="display:flex;"><span>locale-gen
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;LANG=zh_CN.UTF-8&#39;</span>  &gt; /etc/locale.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改时区">修改时区</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>timedatectl set-timezone Asia/Shanghai
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="macos相关">macOS相关</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#Show Library folder</span>
+</span></span><span style="display:flex;"><span>chflags nohidden ~/Library
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#Show hidden files</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#This can also be done by pressing command + shift + ..</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>defaults write com.apple.finder AppleShowAllFiles YES
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#Show path bar</span>
+</span></span><span style="display:flex;"><span>defaults write com.apple.finder ShowPathbar -bool <span style="color:#0086b3">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#Show status bar</span>
+</span></span><span style="display:flex;"><span>defaults write com.apple.finder ShowStatusBar -bool <span style="color:#0086b3">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#Disable unidentified developer warnings</span>
+</span></span><span style="display:flex;"><span>sudo spctl --master-disable
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="linux创建sudo权限用户">Linux创建sudo权限用户</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo adduser foo
+</span></span><span style="display:flex;"><span>sudo usermod -a -G sudo foo
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#取消sudo权限</span>
+</span></span><span style="display:flex;"><span>sudo deluser foo sudo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改为zh_cnutf-8">修改为zh_CN.UTF-8</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/default/locale
+</span></span><span style="display:flex;"><span><span style="color:#008080">LANGUAGE</span><span style="color:#000;font-weight:bold">=</span>zh_CN.UTF-8
+</span></span><span style="display:flex;"><span><span style="color:#008080">LC_MESSAGES</span><span style="color:#000;font-weight:bold">=</span>zh_CN.UTF-8
+</span></span><span style="display:flex;"><span><span style="color:#008080">LANG</span><span style="color:#000;font-weight:bold">=</span>zh_CN.UTF-8
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/2020/03/N1-docker-openwrt/">使用斐讯N1搭建Openwrt旁路网关</a></li>
+        
+        <li><a href="/post/2020/03/ubuntu-bionic-static-ip/">给ubuntu Bionic设置静态IP</a></li>
+        
+        <li><a href="/post/2020/03/ssh-keygen/">使用ssh密钥登陆</a></li>
+        
+        <li><a href="/post/2020/03/downloadByPowerShell/">用PowerShell下载文件</a></li>
+        
+        <li><a href="/post/2020/03/VSCode-sug/">VSCode代码片段内开启快速建议</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/linux'>linux</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="https://xiaotianbc.github.io">啸天编程-啸天的编程记录 By lwxntm</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://xiaotianbc.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://xiaotianbc.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2022/10/reburn_blog/" title="博客重启">博客重启</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2022/03/develop-pio-with-Clion-win/" title="使用windows&#43;Clion开发树莓派pico RP2040简易入门指南">使用windows&#43;Clion开发树莓派pico RP2040简易入门指南</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2021/02/mhgu-trans-bonus/" title="手动转移mhgu存档获得特典的作弊条">手动转移mhgu存档获得特典的作弊条</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2021/02/swtich-init/" title="从零开始使用大气层RCM破解switch的作弊条">从零开始使用大气层RCM破解switch的作弊条</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/05/windowsaddshuangpin/" title="微软拼音添加小鹤方案">微软拼音添加小鹤方案</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/rust-linux-cross-build/" title="Mac上为Linux交叉编译Rust程序">Mac上为Linux交叉编译Rust程序</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/Rustmultitarget/" title="Rust为arm交叉编译">Rust为arm交叉编译</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/javasocket1/" title="小试Java中的socket通信">小试Java中的socket通信</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/kata1/" title="[kata]用golang生成顺时针螺旋">[kata]用golang生成顺时针螺旋</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/nonsamestring/" title="go写一个在原地完成消除[]string中相邻重复的字符串的操作">go写一个在原地完成消除[]string中相邻重复的字符串的操作</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://xiaotianbc.github.io/tags/N1/">N1</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/go/">go</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/java/">java</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/javascript/">javascript</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/kata/">kata</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/linux/">linux</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/pico/">pico</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/rust/">rust</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/switch/">switch</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/vim/">vim</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/vscode/">vscode</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/windows/">windows</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/%E5%8F%8C%E6%8B%BC/">双拼</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://list.78997899.xyz/" title="ServerStatus">ServerStatus</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://xiaotianbc.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>linux | 啸天编程-啸天的编程记录</title>
+    <meta property="og:title" content="linux - 啸天编程-啸天的编程记录">
+    <meta property="og:type" content="article">
+        
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="linux">
+        
+    <meta name="author" content="lwxntm">
+    <meta property="og:url" content="https://xiaotianbc.github.io/tags/linux/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="alternate" type="application/rss+xml" href="https://xiaotianbc.github.io/tags/linux/index.xml" title="啸天编程-啸天的编程记录" />
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://xiaotianbc.github.io">
+                        啸天编程-啸天的编程记录
+                    </a>
+                
+                
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://xiaotianbc.github.io">首页</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/flags/" title="Flags">Flags</a>
+                    
+                    <a  href="https://xiaotianbc.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <h3 class="archive-title">
+        包含标签
+        <span class="keyword">linux</span>
+        的文章
+    </h3>
+    
+
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://xiaotianbc.github.io/post/2020/03/littleaboutvim/">vim在文件末尾增加内容</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年1月26日
+        </date>
+        
+        <div class="post-content">
+            很多时候有在文件末尾增加内容的需求，简单了解快捷键之后就不用再一直按方向键了 跳到文本的最后一行：按G,即shift+g 跳到文本的第一行：gg 跳到最后一个字符 ： 按$键，即shift+4 在当前行下面插入一个新行: o 在当前行上面插入一个新行: O 所以想在文件末尾增加内容的操作就是：G&n……
+            <p class="readmore"><a href="https://xiaotianbc.github.io/post/2020/03/littleaboutvim/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://xiaotianbc.github.io/post/2020/03/nonefixsomebugs/">斐讯N1踩坑不完全记录</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年1月9日
+        </date>
+        
+        <div class="post-content">
+            斐讯 N1 想要当做一个单独的 linux 主机用需要踩很多坑，在此记录一下： 如果安装的时候发现有提示tar ...stamp ... in future这是因为解压出的文件的修改时间大于当前系统时间导致的，不想看到的话就修改一下当前时间： 1 date -s &#34;2020-01-11 15:15:15&#34; 在安装之前，要编辑/root/install.sh里的分区设定： 1 2 parted -s &#34;${DEV_EMMC}&#34; mkpart……
+            <p class="readmore"><a href="https://xiaotianbc.github.io/post/2020/03/nonefixsomebugs/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://xiaotianbc.github.io/post/2020/03/Linux-micro-thing/">Linux相关命令记录</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月31日
+        </date>
+        
+        <div class="post-content">
+            仅仅是为了方便记忆，一般都为 ArchLinux debian10使用。 依赖 1 2 apt update apt install -y vim zsh htop curl git wget unzip screen 安装ssh-key 1 echo &#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQ4YL6VNGhNDFhj/CJbmtUpcTFpyC2YqK19L4dAbTvtsPog3OgqNkdLJnxL6dONqucnrusoOykAI3/5dwHIT5IXHTkye4pEywHAbZBNES7ZGitZgCbmpMhmaecz9ZE3mGeSBkOqYDho33uH5xT9O0AU0pgLRo7BO//ae+gnsH1WEkbK4y0a+typw9QcAupTi+wmfg/w+u6zYGiB3CPZhNqk5SEBvt9WI4cDbcovCTCfhsu1Ty6tD2tCEHeBRzd9UVlZfDpY/dBOcCbBQVEU2Zf1sQos0lkEjcV77oh5REtrha3DojIqZqYSWw+l7cKny6u6Z4W5O/IIVNsS5Tda3oN canxuetian@gmail.com&#34; &gt; ~/.ssh/authorized_keys 禁用密码登录 1 2 3 4 5 6 vim /etc/ssh/sshd_config PubkeyAuthentication yes AuthorizedKeysFile .ssh/authorized_keys PasswordAuthentication no PermitRootLogin without-password 删除登陆信息 1 touch ~/.hushlogin besttrace 1 2 3 4 5 wget https://78997899.xyz/od/Linux/besttrace4linux.zip unzip be* chmod +x besttrace mv besttrace /usr/local/bin/btr rm -rf ./besttrace* zsh 1 2 3 4 5 6 7 sh -c &#34;$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)&#34; #linux curl -fsSL https://starship.rs/install.sh | bash #mac brew install starship # ~/.zshrc eval &#34;$(starship init zsh)&#34; LinuxBrew……
+            <p class="readmore"><a href="https://xiaotianbc.github.io/post/2020/03/Linux-micro-thing/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://xiaotianbc.github.io/post/2020/03/N1-docker-openwrt/">使用斐讯N1搭建Openwrt旁路网关</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月29日
+        </date>
+        
+        <div class="post-content">
+            前言 N1我在年初就买了，但是买回来装了armbian后就一直在吃灰，主要是性能不是很够用，并且当时不知道什么原因导致的连接上路由器之后网卡工作在100 Full Duplex模式下，实在让人吐血（现在刷了最新的armbian之后已经默认千兆），之前无聊之下在研究旁路路由，先在Nas上用kv……
+            <p class="readmore"><a href="https://xiaotianbc.github.io/post/2020/03/N1-docker-openwrt/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://xiaotianbc.github.io/post/2020/03/ubuntu-bionic-static-ip/">给ubuntu Bionic设置静态IP</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月22日
+        </date>
+        
+        <div class="post-content">
+            <p>vim /etc/netplan/01-netcfg.yaml</p>……
+            <p class="readmore"><a href="https://xiaotianbc.github.io/post/2020/03/ubuntu-bionic-static-ip/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://xiaotianbc.github.io/post/2020/03/ssh-keygen/">使用ssh密钥登陆</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月3日
+        </date>
+        
+        <div class="post-content">
+            在命令行中输入: ssh-keygen -t rsa -C &quot;your_email@example.com&quot; cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys chmod 600 ~/.ssh/authorized_keys chmod 700 ~/.ssh vim /etc/ssh/sshd_config RSAAuthentication yes PubkeyAuthentication yes #添加心跳检测 ClientAliveInterval 60 ClientAliveCountMax 1 service sshd restart……
+            <p class="readmore"><a href="https://xiaotianbc.github.io/post/2020/03/ssh-keygen/">阅读全文</a></p>
+        </div>
+    </article>
+    
+
+    
+
+
+
+
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="https://xiaotianbc.github.io">啸天编程-啸天的编程记录 By lwxntm</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://xiaotianbc.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://xiaotianbc.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2022/10/reburn_blog/" title="博客重启">博客重启</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2022/03/develop-pio-with-Clion-win/" title="使用windows&#43;Clion开发树莓派pico RP2040简易入门指南">使用windows&#43;Clion开发树莓派pico RP2040简易入门指南</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2021/02/mhgu-trans-bonus/" title="手动转移mhgu存档获得特典的作弊条">手动转移mhgu存档获得特典的作弊条</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2021/02/swtich-init/" title="从零开始使用大气层RCM破解switch的作弊条">从零开始使用大气层RCM破解switch的作弊条</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/05/windowsaddshuangpin/" title="微软拼音添加小鹤方案">微软拼音添加小鹤方案</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/rust-linux-cross-build/" title="Mac上为Linux交叉编译Rust程序">Mac上为Linux交叉编译Rust程序</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/Rustmultitarget/" title="Rust为arm交叉编译">Rust为arm交叉编译</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/javasocket1/" title="小试Java中的socket通信">小试Java中的socket通信</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/kata1/" title="[kata]用golang生成顺时针螺旋">[kata]用golang生成顺时针螺旋</a>
+    </li>
+    
+    <li>
+        <a href="https://xiaotianbc.github.io/post/2020/03/nonsamestring/" title="go写一个在原地完成消除[]string中相邻重复的字符串的操作">go写一个在原地完成消除[]string中相邻重复的字符串的操作</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://xiaotianbc.github.io/tags/N1/">N1</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/go/">go</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/java/">java</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/javascript/">javascript</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/kata/">kata</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/linux/">linux</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/pico/">pico</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/rust/">rust</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/switch/">switch</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/vim/">vim</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/vscode/">vscode</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/windows/">windows</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/%E5%8F%8C%E6%8B%BC/">双拼</a>
+    
+    <a href="https://xiaotianbc.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://list.78997899.xyz/" title="ServerStatus">ServerStatus</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://xiaotianbc.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
